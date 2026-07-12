@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+import 'core/core.dart' as core;
+import 'features/create_card/view/create_cards_page.dart';
+
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -17,8 +17,10 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       builder: (context, child) {
         return MaterialApp(
-          title: 'kotoflip',
-          theme: ThemeData(colorScheme: .fromSeed(seedColor: Colors.deepPurple)),
+          title: core.Constant().appName,
+          theme: ThemeData(
+            colorScheme: .fromSeed(seedColor: Colors.deepPurple),
+          ),
           home: const MyHomePage(title: 'Flutter Demo Home Page'),
         );
       },
@@ -39,10 +41,8 @@ class MyHomePage extends StatelessWidget {
         title: Text(title),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // TODO: navigate to create_card page
-        },
-        tooltip: 'Add',
+        onPressed: () => Navigator.of(context).push(CreateCardPage.route()),
+        tooltip: core.Constant().buttonAdd,
         child: const Icon(Icons.add),
       ),
     );
