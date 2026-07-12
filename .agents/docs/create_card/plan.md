@@ -12,17 +12,18 @@
 
 ### 待執行
 - [ ] sqlite 資料模型設計（單字卡 / label 資料表與關聯）（[progress_1.md](progress_1.md)）
-- [ ] 新增單字卡 Page UI（卡片正反翻轉、堆疊視覺效果、label 輸入含 autocomplete）（[progress_2.md](progress_2.md)）
+- [ ] 新增單字卡 Page UI（卡片正反翻轉、堆疊視覺效果、label 輸入含 autocomplete，含 `flutter_screenutil` RWD 適配，`designSize` 以 Pixel 10 Pro 估算為 427×952）（[progress_2.md](progress_2.md)）
 - [ ] 儲存與驗證邏輯整合（必填/長度檢查、label 預設規則、完成後導回 Home）（[progress_3.md](progress_3.md)）
 
 ### 已完成
 （無）
 
 ## 總結
-規格討論已完成並記錄於 `decision.md`。待確認上述任務拆分方式後，即可建立對應的 `progress_N.md` 並開始逐項實作。
+規格討論已完成並記錄於 `decision.md`。待確認上述任務拆分方式後，即可建立對應的 `progress_N.md` 並開始逐項實作。`flutter_screenutil` 的 `designSize` 已依 Pixel 10 Pro 規格估算為 427×952（估算值，實作時建議以實機/模擬器實測值覆核）。
 
 ### 影響範圍
 - 新增：sqlite schema（單字卡表、label 表、關聯表）
 - 新增：新增單字卡 Page 與相關元件（卡片翻轉、堆疊效果、label 輸入/autocomplete）
 - 新增：Home 頁「新增」按鈕導頁邏輯
+- 新增：`flutter_screenutil` 依賴（[pubspec.yaml](../../../pubspec.yaml)），`main.dart` 加入 `ScreenUtilInit` 初始化
 - 不影響：既有編輯/刪除/列表/群組功能（尚未實作或不在本次範圍）

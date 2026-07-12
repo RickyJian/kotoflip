@@ -38,6 +38,7 @@ dependencies:
   # BLoC state management (https://bloclibrary.dev/)
   flutter_bloc: ^9.1.0
   equatable: ^2.0.7
+  flutter_screenutil: ^5.9.3
 
 dev_dependencies:
   flutter_test:

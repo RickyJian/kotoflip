@@ -64,3 +64,20 @@
 **決定**：視覺堆疊最多顯示 3 張（最上層為編輯中卡片，往下疊 2 張）；超過的卡片已存入 sqlite，僅不再增加視覺堆疊層數。
 **理由**：常見卡片堆疊 UI（如 Tinder 卡片）慣例值，避免堆太高、且不必渲染所有已建立卡片。
 **時間**：2026-07-11
+
+## RWD 套件選型
+
+**討論**：專案目前僅支援 Android/iOS，新增單字卡 Page 含正方形卡片翻轉、堆疊視覺效果、label 輸入區塊，需要在不同機型螢幕尺寸下維持視覺比例一致。
+**決定**：採用 `flutter_screenutil`（^5.9.3）做像素級適配(pixel-perfect adaptation)；`main.dart` 以 `ScreenUtilInit` 包住 App 並設定 `designSize`，「新增單字卡 Page UI」（[progress_2.md](progress_2.md)）內卡片尺寸、堆疊位移、label 區塊的尺寸/間距/字體皆改用 `.w`/`.h`/`.sp` 單位。
+**理由**：新增單字卡 Page 的卡片尺寸、堆疊位移量需要精確還原設計稿比例，`flutter_screenutil` 依 designSize 換算最貼近此需求。
+**時間**：2026-07-12
+
+## designSize 基準值
+
+**討論**：以 Google Pixel 10 Pro 作為開發參考機型，決定 `ScreenUtilInit` 的 `designSize`。
+**決定**：`designSize` 暫定為 `Size(427, 952)`（邏輯像素 dp）。
+**理由**：
+- Pixel 10 Pro 官方公布的實體解析度(physical resolution)為 1280 × 2856 px，像素密度約 495ppi（來源：GSMArena）。
+- Android 邏輯像素(dp) = 實體像素 px ÷ 密度縮放係數(density scale factor)；495ppi 最接近 xxhdpi 標準密度桶（3x, 480dpi 基準），故以 3x 換算：1280 ÷ 3 ≈ 427、2856 ÷ 3 ≈ 952。
+**注意**：Google 官方規格未直接公布 Pixel 10 Pro 的 dp 邏輯解析度，實際系統密度桶由 Android 系統決定，可能與此估算值有些微落差；此為換算估算值，非官方直接公布數字。若後續在實機或模擬器上以 `MediaQuery.of(context).size` 量測到不同數值，應以實測值為準並回頭更新此決定。
+**時間**：2026-07-12
