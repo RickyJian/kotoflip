@@ -4,6 +4,14 @@
 
 執行前需參閱 `decision.md` 檔案才可開始執行。
 
+## Home 頁面整備（新增進入點）
+
+檔案：[lib/main.dart](../../../lib/main.dart)。目前是預設 counter 範例程式碼，先清理成只保留新增進入點，實際導頁邏輯留待串接階段處理。
+
+- [x] 移除 `_counter` 狀態與 `_incrementCounter()` 邏輯，`body` 內的 `Center`/`Column`/文字顯示全部移除
+- [x] `MyHomePage` 由 `StatefulWidget` 改為 `StatelessWidget`（無殘留狀態）
+- [x] 保留 `AppBar`；保留 `floatingActionButton`（icon 維持 `Icons.add`，`onPressed` 先留空／TODO）
+
 ## 卡片翻轉元件
 
 正方形卡片，正面顯示「原文」輸入區、背面顯示「譯文」輸入區，皆以左上角淡色文字作為 placeholder。
@@ -30,4 +38,4 @@
 
 ## 總結
 
-尚未開始執行，待審閱本檔案任務拆分後依序進行。
+「Home 頁面整備」已完成並審閱通過。接下來進行「卡片翻轉元件」。
