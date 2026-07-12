@@ -45,3 +45,16 @@
 
 1. i18n：台灣繁體中文、日文、英文
 2. theme：dark、light
+
+## Project Structure
+
+採用 feature-first 架構：
+
+```
+lib/
+  repositories/   # 共用資料存取層（跨功能重用）
+  models/         # 共用 domain model
+  widgets/        # 跨功能共用元件
+  features/
+    <feature>/    # 各功能自成一包（bloc、view、widgets）
+```
