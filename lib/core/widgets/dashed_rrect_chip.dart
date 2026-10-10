@@ -50,7 +50,7 @@ class DashedRRectChip extends StatelessWidget {
               child: Text(
                 text,
                 maxLines: 1,
-                overflow: TextOverflow.fade,
+                overflow: TextOverflow.ellipsis,
                 style: TextStyle(color: color, fontSize: fontSize),
               ),
             ),
